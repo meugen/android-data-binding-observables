@@ -16,23 +16,36 @@ import com.beltranfebrer.databindingobservables.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private ViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setListeners(this);
+        viewModel = new ViewModel();
+        binding.setViewModel(viewModel);
+
     }
 
     public void onLightChanged(CompoundButton view, boolean isChecked) {
-        binding.setIsOn(isChecked);
+        viewModel.isOn = isChecked;
+        binding.setViewModel(viewModel);
     }
 
     public void onColorChanged(CompoundButton view, boolean isChecked) {
-        binding.setIsColor(isChecked);
+        viewModel.isColor = isChecked;
+        binding.setViewModel(viewModel);
     }
 
     public void onMessageChanged(CompoundButton view, boolean isChecked) {
-        binding.setIsChanged(isChecked);
+        viewModel.isChanged = isChecked;
+        binding.setViewModel(viewModel);
+    }
+
+    public static class ViewModel {
+        public boolean isOn;
+        public boolean isColor;
+        public boolean isChanged;
     }
 }

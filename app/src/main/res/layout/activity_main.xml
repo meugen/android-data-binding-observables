@@ -2,14 +2,8 @@
 <layout>
     <data>
         <variable
-            name="isOn"
-            type="boolean"/>
-        <variable
-            name="isColor"
-            type="boolean"/>
-        <variable
-            name="isChanged"
-            type="boolean"/>
+            name="viewModel"
+            type="com.beltranfebrer.databindingobservables.MainActivity.ViewModel"/>
         <variable
             name="listeners"
             type="com.beltranfebrer.databindingobservables.MainActivity"/>
@@ -23,7 +17,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:background="@{isOn ? @color/background_material_light : @color/background_material_dark}"
+        android:background="@{viewModel.isOn ? @color/background_material_light : @color/background_material_dark}"
         android:orientation="vertical"
         tools:context="com.beltranfebrer.databindingobservables.MainActivity">
 
@@ -40,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_bulb"
-                android:tint="@{isOn ? @color/yellow_on : @color/yellow_off}"
+                android:tint="@{viewModel.isOn ? @color/yellow_on : @color/yellow_off}"
                 android:tintMode="src_atop"/>
         </LinearLayout>
 
@@ -57,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TEXT"
-                android:textColor="@{isColor ? @color/red : @color/green}"/>
+                android:textColor="@{viewModel.isColor ? @color/red : @color/green}"/>
 
         </LinearLayout>
 
@@ -73,7 +67,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{isChanged ? `text one` : `text two`}"/>
+                android:text="@{viewModel.isChanged ? `text one` : `text two`}"/>
 
         </LinearLayout>
 
