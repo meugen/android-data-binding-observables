@@ -18,7 +18,23 @@
         android:id="@+id/switcher"/>
 
     <ImageView
-        android:id="@+id/light"
+        android:id="@+id/light1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bulb"
+        android:tint="@color/yellow_off"/>
+
+
+    <ImageView
+        android:id="@+id/light2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bulb"
+        android:tint="@color/yellow_off"/>
+
+
+    <ImageView
+        android:id="@+id/light3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_bulb"

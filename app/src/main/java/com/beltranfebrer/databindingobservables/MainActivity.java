@@ -19,16 +19,20 @@ public class MainActivity extends AppCompatActivity {
 
         final View room = findViewById(R.id.room);
         final Switch switcher = (Switch) findViewById(R.id.switcher);
-        final ImageView light = (ImageView) findViewById(R.id.light);
+        final ImageView light1 = (ImageView) findViewById(R.id.light1);
+        final ImageView light2 = (ImageView) findViewById(R.id.light2);
+        final ImageView light3 = (ImageView) findViewById(R.id.light3);
 
         switcher.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                light.setColorFilter(getResources()
-                        .getColor(isChecked
-                                        ? R.color.yellow_on
-                                        : R.color.yellow_off));
+                int color = getResources().getColor(isChecked
+                        ? R.color.yellow_on
+                        : R.color.yellow_off);
+                light1.setColorFilter(color);
+                light2.setColorFilter(color);
+                light3.setColorFilter(color);
                 room.setBackground(new ColorDrawable(getResources()
                         .getColor(isChecked
                                 ? R.color.background_material_light
