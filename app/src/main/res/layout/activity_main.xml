@@ -1,43 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/room"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/background_material_dark"
-    android:orientation="vertical"
-    tools:context="com.beltranfebrer.databindingobservables.MainActivity">
+<layout>
+    <data>
+        <variable
+            name="isOn"
+            type="boolean"/>
+        <variable
+            name="listeners"
+            type="com.beltranfebrer.databindingobservables.MainActivity"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/room"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:background="@{isOn ? @color/background_material_light : @color/background_material_dark}"
+        android:orientation="vertical"
+        tools:context="com.beltranfebrer.databindingobservables.MainActivity">
 
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/switcher"/>
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/switcher"
+            android:onCheckedChanged="@{listeners.onCheckChanged}"/>
 
-    <ImageView
-        android:id="@+id/light1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_bulb"
-        android:tint="@color/yellow_off"/>
-
-
-    <ImageView
-        android:id="@+id/light2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_bulb"
-        android:tint="@color/yellow_off"/>
+        <ImageView
+            android:id="@+id/light1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_bulb"
+            android:tint="@{isOn ? @color/yellow_on : @color/yellow_off}"
+            android:tintMode="src_atop"/>
 
 
-    <ImageView
-        android:id="@+id/light3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_bulb"
-        android:tint="@color/yellow_off"/>
+        <ImageView
+            android:id="@+id/light2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_bulb"
+            android:tint="@{isOn ? @color/yellow_on : @color/yellow_off}"
+            android:tintMode="src_atop"/>
 
-</LinearLayout>
+
+        <ImageView
+            android:id="@+id/light3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_bulb"
+            android:tint="@{isOn ? @color/yellow_on : @color/yellow_off}"
+            android:tintMode="src_atop"/>
+
+    </LinearLayout>
+</layout>
