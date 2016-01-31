@@ -24,7 +24,15 @@ public class MainActivity extends AppCompatActivity {
         binding.setListeners(this);
     }
 
-    public void onCheckChanged(CompoundButton view, boolean isChecked) {
+    public void onLightChanged(CompoundButton view, boolean isChecked) {
         binding.setIsOn(isChecked);
+    }
+
+    public void onColorChanged(CompoundButton view, boolean isChecked) {
+        binding.setIsColor(isChecked);
+    }
+
+    public void onMessageChanged(CompoundButton view, boolean isChecked) {
+        binding.setIsChanged(isChecked);
     }
 }

@@ -5,6 +5,12 @@
             name="isOn"
             type="boolean"/>
         <variable
+            name="isColor"
+            type="boolean"/>
+        <variable
+            name="isChanged"
+            type="boolean"/>
+        <variable
             name="listeners"
             type="com.beltranfebrer.databindingobservables.MainActivity"/>
     </data>
@@ -21,37 +27,56 @@
         android:orientation="vertical"
         tools:context="com.beltranfebrer.databindingobservables.MainActivity">
 
-        <Switch
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/switcher"
-            android:onCheckedChanged="@{listeners.onCheckChanged}"/>
+            android:orientation="horizontal">
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{listeners.onLightChanged}"/>
+            <ImageView
+                android:id="@+id/light1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bulb"
+                android:tint="@{isOn ? @color/yellow_on : @color/yellow_off}"
+                android:tintMode="src_atop"/>
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/light1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_bulb"
-            android:tint="@{isOn ? @color/yellow_on : @color/yellow_off}"
-            android:tintMode="src_atop"/>
+            android:orientation="horizontal">
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{listeners.onColorChanged}"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEXT"
+                android:textColor="@{isColor ? @color/red : @color/green}"/>
 
-        <ImageView
-            android:id="@+id/light2"
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_bulb"
-            android:tint="@{isOn ? @color/yellow_on : @color/yellow_off}"
-            android:tintMode="src_atop"/>
+            android:orientation="horizontal">
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{listeners.onMessageChanged}"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{isChanged ? `text one` : `text two`}"/>
 
-        <ImageView
-            android:id="@+id/light3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_bulb"
-            android:tint="@{isOn ? @color/yellow_on : @color/yellow_off}"
-            android:tintMode="src_atop"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 </layout>
